@@ -1,22 +1,25 @@
-export type AuctionEvent =
-    {
-        type: 'init';
-        auctionId: string;
-        owner: string;
-        quantity: number;
-        description: string;
-    } |
-    {
-        type: 'pledge',
-        auctionId: string;
-        owner: string;
-        price: number;
-        quantity: number
-    } |
-    {
-        type: 'close';
-        auctionId: string;
-    };
+export type AuctionEvent = InitEvent | PledgeEvent | CloseEvent;
+
+interface InitEvent {
+    type: 'init';
+    auctionId: string;
+    owner: string;
+    quantity: number;
+    description: string;
+};
+
+interface PledgeEvent {
+    type: 'pledge',
+    auctionId: string;
+    owner: string;
+    price: number;
+    quantity: number
+};
+
+interface CloseEvent {
+    type: 'close';
+    auctionId: string;
+};
 
 export type Pledge = {
     owner: string;
